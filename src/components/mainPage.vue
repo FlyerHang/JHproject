@@ -2,15 +2,14 @@
     <div id="mainPage">
         <el-container>
             <el-header>
-                <div class="headerTitle" @click="backNav()">
-                  <span><img src="../images/backNav.png">金华开发区项目生命周期管理</span>
-                </div>
-                <div class="rightHead">
-                    <span class="loginUser" @click="goTo()"><span class="UseImg"></span>user</span>
+                <div class="header">
+                    <img src="../images/navLogo.png" alt="">
+                    <span @click="goToBack()"><span class="UseImg"></span>user</span>
                 </div>
             </el-header>
             <el-container>
-                <el-aside>
+                <el-aside width="250px">
+                    <div class="backNav" @click="backNav()">企业档案</div>
                     <div class="navMain">
                         <el-row class="tac">
                             <el-col :span="24">
@@ -18,7 +17,7 @@
                                     mode="vertical"
                                     class="el-menu-vertical-demo"
                                     active-text-color="#ffd04b"
-                                    background-color="#001529"
+                                    background-color="#384150"
                                     text-color="#fff"
                                     router
                                     :default-active = "path">
@@ -71,7 +70,7 @@ export default {
                     children:[]
                 }, {
                     title: '项目预警',
-                    path: '/mainPage/alertP',
+                    path: '/mainPage/alertDetail',
                     children:[]
                 }, {
                     title: '项目排名',
@@ -102,15 +101,6 @@ export default {
     },
     created(){
         this.path=this.$route.path;
-    },
-    components: {
-        // archives: () => import("../subgroup/archives"),
-        // detailC: () => import("../subgroup/detailC"),
-        // alertP: () => import("../subgroup/alertP"),
-        // alertDeatil: () => import("../subgroup/alertDetail"),
-        // ranking: () => import("../subgroup/ranking"),
-        // rankFive: () => import("../subgroup/rankFive"),
-        // system: () => import("../subgroup/system"),
     },
     methods: {
         /**
@@ -150,14 +140,40 @@ export default {
     height: 100vh;
     background: #f2f2f2;
 }
+.header{
+    text-align: left;
+    background: linear-gradient(to right,#072043,#1e437f);
+}
+.header>img{
+    width: 20%;
+    margin-top: 10px;
+}
+.backNav{
+    line-height: 56px;
+    width: 100%;
+    color: #bbb;
+    font-size: 12px;
+    cursor: pointer;
+}
+.header>span{
+    display: flex;
+    float: right;
+    width: 110px;
+    height: 70px;
+    line-height: 70px;
+    margin-right: 20px;
+    color: #fff;
+    align-items: center;
+    cursor: pointer;
+}
 .el-header{
     height: 70px!important;
     padding: 0;
 }
 .el-aside{
-    width: 16%!important;
+    // width: 16%!important;
     min-height: calc(100vh - 70px);
-    background: #001529;
+    background: #384150;
 }
 .headerTitle{
     float: left;
@@ -170,7 +186,7 @@ export default {
 .headerTitle>span{
     padding: 15px 25px;
     color: #fff;
-    background: #284867;
+    background: #384150;
     cursor: pointer;
     img{
         position: relative;
@@ -198,9 +214,6 @@ export default {
     background: url("../images/tou.jpg");
     background-size: 100%;
     margin-right: 5px;
-}
-.navMain{
-    padding-top: 20px;
 }
 .el-menu{
   background: transparent;

@@ -16,7 +16,7 @@
             <div class="list">
                 <ul class="listBox">
                     <li v-for="(list,index) in 5" :key="index">
-                        <div v-if="index==0" class="float one">
+                        <!-- <div v-if="index==0" class="float one">
                             <span>指标处理超时</span>
                         </div>
                         <div v-if="index==1" class="float two">
@@ -30,7 +30,7 @@
                         </div>
                         <div v-if="index==4" class="float one">
                             <span>指标处理超时</span>
-                        </div>
+                        </div> -->
                         <div class="head"><span class="bold">金华区块土石整理工程</span></div>
                         <div class="listMain">
                             <div class="left">
@@ -58,7 +58,7 @@
             </div>
             <div class="pageBox">
                 <el-pagination
-                    :page-sizes="[100, 200, 300, 400]"
+                    :page-sizes="[10, 20, 30, 40]"
                     :page-size="100"
                     layout="total, sizes, prev, pager, next, jumper"
                     :total="400">
@@ -75,7 +75,7 @@
             <div class="list">
                 <ul class="listBox">
                     <li v-for="(list,index) in 5" :key="index">
-                        <div v-if="index==0" class="float one">
+                        <!-- <div v-if="index==0" class="float one">
                             <span>投资金额不足</span>
                         </div>
                         <div v-if="index==1" class="float two">
@@ -89,7 +89,7 @@
                         </div>
                         <div v-if="index==4" class="float one">
                             <span>投资金额不足</span>
-                        </div>
+                        </div> -->
                         <div class="head"><span class="bold">金华区块土石整理工程</span></div>
                         <div class="listMain">
                             <div class="left">
@@ -117,7 +117,7 @@
             </div>
             <div class="pageBox">
                 <el-pagination
-                    :page-sizes="[100, 200, 300, 400]"
+                    :page-sizes="[10, 20, 30, 40]"
                     :page-size="100"
                     layout="total, sizes, prev, pager, next, jumper"
                     :total="400">
@@ -127,7 +127,7 @@
         <div class="pop" v-if="popShow">
             <div class="popBox">
                 <div class="popHead">
-                    催报详情<span @click="popShow=fasle">x</span>
+                    催报详情<span @click="popShow=false">x</span>
                 </div>
                 <div class="popMain">
                     此项目立项环节未按照规定时间完成，已超过三天，点击“确定”，将给相关负责部门发送短信催报
@@ -185,18 +185,18 @@ export default {
         right: 0;
         bottom: 0;
         .popBox{
-            width: 400px;
-            height: 200px;
+            width: 300px;
+            height: 230px;
             background: #fff;
             margin-left: calc(50% - 200px);
-            margin-top: 10%;
+            margin-top: 15%;
             box-shadow: 0 0 5px 0 #000;
             .popBtn{
                 line-height: 50px;
                 text-align: center;
                 .define{
                     padding: 7px 20px;
-                    background: #283949;
+                    background: #1890ff;
                     border-radius: 5px;
                     outline: none;
                     border:#283949;
@@ -215,10 +215,11 @@ export default {
                 justify-items: center;
             }
             .popHead{
-                background: #283949;
+                // background: #283949;
                 line-height: 40px;
                 padding-left: 10px;
-                color: #fff;
+                text-align: center;
+                border-bottom: 1px solid #e7e7e7;
                 span{
                     float: right;
                     width: 40px;
