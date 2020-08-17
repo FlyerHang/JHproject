@@ -175,7 +175,7 @@ export default {
     }
     .dataList{
         padding: 15px;
-        height: 45.5vh;
+        height: 47vh;
         overflow: auto;
         ul{
             li{
@@ -258,7 +258,7 @@ export default {
 .searchBox{
     width: calc(100% - 30px);
     height: 150px;
-    padding: 20px 15px;
+    padding: 20px 15px 0 15px;
     background: #fff;
     font-size: 14px;
     border-radius: 5px;

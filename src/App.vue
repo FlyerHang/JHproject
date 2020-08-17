@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <!-- <img alt="Vue logo" src="./assets/images/logo.png"> -->
     <router-view/>
   </div>
 </template>
@@ -36,7 +36,27 @@ li {
 }
 ul>.el-menu-item{
     /* background: #283949!important; */
-    padding-left: 70px!important;
+    padding-left: 0!important;
     font-size: 12px!important;
+}
+.el-submenu>.el-submenu__title{
+  text-align: left;
+  padding-left: 50px!important;
+}
+.el-menu-vertical-demo.el-menu>div>.el-menu-item{
+    text-align: left;
+    padding-left: 50px!important;
+}
+.el-menu-vertical-demo.el-menu>div>.el-menu-item.is-active{
+    text-align: left;
+    padding-left: 50px!important;
+    background: linear-gradient(to right,#188ffe,#1890ff,#33c1ff)!important;
+}
+.el-menu-item, .el-submenu__title{
+  height: 46px;
+  line-height: 46px;
+}
+.el-menu-vertical-demo.el-menu{
+  border: none;
 }
 </style>

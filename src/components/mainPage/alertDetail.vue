@@ -1,5 +1,8 @@
 <template>
     <div id="alertDetail">
+        <div class="wayName">
+            <span class="outRouter">项目预警</span>/<span v-if="selShow==0">新建项目</span><span v-if="selShow==1">续建项目</span>
+        </div>
         <div class="navD">
             <ul>
                 <li :class="selShow==0?'select':''" @click="selShow=0">新建项目</li>
@@ -9,6 +12,7 @@
         <div class="dataList" v-if="selShow==0">
             <div class="searchBox">
                 <input type="text" placeholder="请输入项目名称"><span><img src="../../images/searchH.png" alt=""></span>
+                超时原因：
                 <select name="because" id="">
                     <option value="0">选择超时原因</option>
                 </select>
@@ -31,7 +35,14 @@
                         <div v-if="index==4" class="float one">
                             <span>指标处理超时</span>
                         </div> -->
-                        <div class="head"><span class="bold">金华区块土石整理工程</span></div>
+                        <div class="head">
+                            <span class="bold">金华区块土石整理工程</span>
+                            <span v-if="index==0" class="red"><span class="point"></span>指标处理超时</span>
+                            <span v-if="index==1" class="red"><span class="point"></span>立项超时</span>
+                            <span v-if="index==2" class="red"><span class="point"></span>审价招标超时</span>
+                            <span v-if="index==3" class="red"><span class="point"></span>统计入库超时</span>
+                            <span v-if="index==4" class="red"><span class="point"></span>指标处理超时</span>
+                        </div>
                         <div class="listMain">
                             <div class="left">
                                 <ul>
@@ -44,13 +55,14 @@
                             </div>
                             <div class="center">
                                 <ul>
-                                    <li>总历时<br><span class="bold">40</span>天</li>
+                                    <li>总历时<br><span class="big">40</span>天</li>
                                     <li class="green">超时<br><span><span class="bold">3</span>天</span></li>
                                     <li>当前责任部门<br>建设局</li>
                                 </ul>
                             </div>
                             <div class="right">
-                                <button class="btn" @click="detailShow()">催报</button><span>1</span>
+                                <button class="btn" @click="detailShow()">催报</button>
+                                <!-- <span>1</span> -->
                             </div>
                         </div>
                     </li>
@@ -68,6 +80,7 @@
         <div class="dataList" v-else>
             <div class="searchBox">
                 <input type="text" placeholder="请输入项目名称"><span><img src="../../images/searchH.png" alt=""></span>
+                超时原因：
                 <select name="because" id="">
                     <option value="0">选择超时原因</option>
                 </select>
@@ -90,26 +103,34 @@
                         <div v-if="index==4" class="float one">
                             <span>投资金额不足</span>
                         </div> -->
-                        <div class="head"><span class="bold">金华区块土石整理工程</span></div>
+                        <div class="head">
+                            <span class="bold">金华区块土石整理工程</span>
+                            <span v-if="index==0" class="red"><span class="point"></span>投资金额不足</span>
+                            <span v-if="index==1" class="red"><span class="point"></span>支付金额不足</span>
+                            <span v-if="index==2" class="red"><span class="point"></span>投资金额不足</span>
+                            <span v-if="index==3" class="red"><span class="point"></span>支付金额不足</span>
+                            <span v-if="index==4" class="red"><span class="point"></span>投资金额不足</span>
+                        </div>
                         <div class="listMain">
                             <div class="left">
                                 <ul>
                                     <li>项目业主：融盛集团</li>
                                     <li>投资主管部门：建设局</li>
-                                    <li>建设性质：新建类</li>
+                                    <li>建设性质：续建类</li>
                                     <li>项目总用地：100亩</li>
                                     <li>项目类别：其他</li>
                                 </ul>
                             </div>
                             <div class="center">
                                 <ul>
-                                    <li>总历时<br><span class="bold">40</span>天</li>
+                                    <li>总历时<br><span class="big">40</span>天</li>
                                     <li class="green">超时<br><span><span class="bold">3</span>天</span></li>
                                     <li>当前责任部门<br>建设局</li>
                                 </ul>
                             </div>
                             <div class="right">
-                                <button class="btn" @click="detailShow()">催报</button><span>{{index+1}}</span>
+                                <button class="btn" @click="detailShow()">催报</button>
+                                <!-- <span>{{index+1}}</span> -->
                             </div>
                         </div>
                     </li>
@@ -165,6 +186,12 @@ export default {
 
         },
         /**
+         *@返回上一页
+         */
+        backPrev(){
+            this.$router.go(-1);
+        },
+        /**
          * @催报
          */
         detailShow(){
@@ -178,6 +205,35 @@ export default {
     text-align: left;
     background: #fff;
     font-size: 14px;
+    .wayName{
+        line-height: 40px;
+        border-bottom: 1px solid #d7d7d7;
+        padding-left: 15px;
+        .outRouter{
+            color: #aaa;
+        }
+        span{
+            display: inline-block;
+            padding: 5px;
+            // &:first-child{
+            //     cursor: pointer;
+            // }
+        }
+    }
+    .red{
+        color: red;
+        margin-left: 10px;
+        span.point{
+            position: relative;
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            top: -3px;
+            margin-right: 5px;
+            background: red;
+            border-radius: 50%;
+        }
+    }
     .pop{
         position: fixed;
         top: 0;
@@ -190,6 +246,7 @@ export default {
             background: #fff;
             margin-left: calc(50% - 200px);
             margin-top: 15%;
+            margin-left: 45%;
             box-shadow: 0 0 5px 0 #000;
             .popBtn{
                 line-height: 50px;
@@ -202,10 +259,10 @@ export default {
                     border:#283949;
                     color: #fff;
                     cursor: pointer;
-                    &:hover{
-                        background: #626365;
-                        border: #626365;
-                    }
+                    // &:hover{
+                    //     background: #626365;
+                    //     border: #626365;
+                    // }
                 }
             }
             .popMain{
@@ -239,7 +296,7 @@ export default {
         }
         .list{
             padding: 20px 30px;
-            height: 61vh;
+            height: 56vh;
             overflow: auto;
             ul.listBox{
                 &>li{
@@ -368,6 +425,8 @@ export default {
             line-height: 50px;;
             select{
                 width: 120px;
+                height: 30px;
+                border-radius: 3px;
                 border:1px solid #e4e4e4;
                 color: #999;
             }
@@ -407,6 +466,11 @@ export default {
                 }
             }
         }
+    }
+    .big{
+        font-size: 22px;
+        font-weight: bold;
+        color: #000!important;
     }
 }
 </style>

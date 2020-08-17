@@ -1,5 +1,12 @@
 <template>
     <div id="detailC">
+        <div class="wayName">
+            <span class="outRouter" @click="bcakPrev()">项目预警</span>/
+            <span v-if="navShow==0">基础信息</span>
+            <span v-if="navShow==1">招标信息</span>
+            <span v-if="navShow==2">审批进度</span>
+            <span v-if="navShow==3">智慧工地</span>
+        </div>
         <div class="deNav">
             <ul>
                 <li :class="navShow==0?'select':''" @click="navShow=0">基础信息</li>
@@ -162,7 +169,9 @@
                 <img src="../../images/u602.jpg" alt="">
             </div>
         </div>
-        <div class="confirm"><button @click="goToBack()">确定</button></div>
+        <div class="confirm">
+            <!-- <button @click="goToBack()">确定</button> -->
+        </div>
     </div>
 </template>
 <script>
@@ -180,6 +189,12 @@ export default {
     },
     methods: {
         /**
+         * @返回上一页面
+         */
+        bcakPrev(){
+            this.$router.go(-1);
+        },
+        /**
          * @返回上一页
          */
         goToBack:function(){
@@ -196,8 +211,21 @@ export default {
     text-align: left;
     background: #fff;
     font-size: 14px;
+    .wayName{
+        line-height: 40px;
+        border-bottom: 1px solid #d7d7d7;
+        padding-left: 15px;
+        .outRouter{
+            color: #aaa;
+            cursor: pointer;
+        }
+        span{
+            display: inline-block;
+            padding: 5px;
+        }
+    }
     .confirm{
-        padding: 30px 0;
+        padding: 15px 0;
         text-align: center;
         button{
             padding: 10px 40px;
@@ -211,13 +239,17 @@ export default {
     }
     .deMain{
         .navFour{
+            height: 63vh;
+            padding: 1vh;
             text-align: center;
             img{
-                margin-top: 30px;
+                height: 100%;
             }
         }
         .navThree{
             padding: 15px 30px;
+            height: 66vh;
+            overflow: auto;
             ul{
                 li{
                     .main{
@@ -280,7 +312,7 @@ export default {
                 padding: 15px;
                 li{
                     padding-left: 15px;
-                    line-height: 50px;
+                    line-height: 48px;
                     span{
                         display: inline-block;
                         width: 130px;
@@ -322,17 +354,16 @@ export default {
     }
     .deNav{
         padding: 15px;
-        border-bottom:1px solid #e4e4e4;
         ul{
             overflow: hidden;
             li{
                 float: left;
-                padding: 18px 30px;
+                padding: 12px 30px;
                 margin-left:50px;
                 cursor: pointer;
                 &.select{
-                    background: #00a5ff;
-                    color: #fff;
+                    border-bottom: 3px solid;
+                    border-color: #188ffe;
                 }
             }
         }

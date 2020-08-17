@@ -3,20 +3,20 @@
         <el-container>
             <el-header>
                 <div class="header">
-                    <img src="../images/navLogo.png" alt="">
+                    <img src="../images/navLogo.png" @click="backNav()" alt="">
                     <span @click="goToBack()"><span class="UseImg"></span>user</span>
                 </div>
             </el-header>
             <el-container>
                 <el-aside width="250px">
-                    <div class="backNav" @click="backNav()">企业档案</div>
+                    <div class="backNav">企业档案</div>
                     <div class="navMain">
                         <el-row class="tac">
                             <el-col :span="24">
                                 <el-menu
                                     mode="vertical"
                                     class="el-menu-vertical-demo"
-                                    active-text-color="#ffd04b"
+                                    active-text-color="#fff"
                                     background-color="#384150"
                                     text-color="#fff"
                                     router
@@ -145,15 +145,17 @@ export default {
     background: linear-gradient(to right,#072043,#1e437f);
 }
 .header>img{
-    width: 20%;
+    width: 19%;
     margin-top: 10px;
+    cursor: pointer;
 }
 .backNav{
-    line-height: 56px;
-    width: 100%;
+    line-height: 46px;
+    text-align: left;
+    padding-left: 50px;
     color: #bbb;
     font-size: 12px;
-    cursor: pointer;
+    // cursor: pointer;
 }
 .header>span{
     display: flex;
@@ -164,7 +166,6 @@ export default {
     margin-right: 20px;
     color: #fff;
     align-items: center;
-    cursor: pointer;
 }
 .el-header{
     height: 70px!important;
@@ -194,6 +195,7 @@ export default {
         margin-right: 3px;
         height: 20px;
         width: 20px;
+        cursor: pointer;
     }
 }
 .rightHead>span{
@@ -237,7 +239,9 @@ export default {
     float: right;
 }
 .mainBox{
-    max-height: 825px;
+    // max-height: 825px;
+    height: 88vh;
+    background: #fff;;
     overflow: auto;
 }
 // .el-menu-item.is-active{
